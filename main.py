@@ -14,11 +14,9 @@ from openinference.instrumentation.crewai import CrewAIInstrumentor
 MODEL_NAME='model'
 myllm = LLM(
     model=MODEL_NAME,
-    api_base="",  #API provider
+    api_base="",
     api_key=""
 )
-
-
 os.environ["LANGFUSE_PUBLIC_KEY"] = "" 
 os.environ["LANGFUSE_SECRET_KEY"] = ""
 os.environ["LANGFUSE_BASE_URL"] = "http://localhost:3000"
@@ -30,9 +28,8 @@ try:
     else:
         print("Authentication failed. Please check your credentials and host.")
 except Exception as e:
-    print(f"详细错误信息：{e}")
+    print(f"Error：{e}")
 
-# -------
 CrewAIInstrumentor().instrument(skip_dep_check=True)
 
 
@@ -50,7 +47,6 @@ for fault_case in dir_contents:
     else:
         tools_list = create_k8s_tools(path)
         diag_case_path=os.path.join(diag_path,fault_case)
-        print('------------诊断工作目录:',diag_case_path,'--------------')
         os.makedirs(diag_case_path,exist_ok=True)
         trace_path=os.path.join(diag_case_path, "trace.json")
         if os.path.exists(trace_path): 
