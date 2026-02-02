@@ -1,0 +1,22 @@
+# LLM model
+llm:
+  model: ""                    
+  api_base: ""
+  api_key: ""    
+  temperature: 0
+  max_tokens: 4096
+  timeout: 60 
+
+# Langfuse Observation
+langfuse:
+  public_key: "pk-"
+  secret_key: "sk-"
+  base_url: "http://localhost:3000"
+
+# Task
+diagnosis:
+  fault_category: "startup" # ["service",'admission','startup','runtime','performance','scheduling','infrastructure']
+  prompt_strategy: "base" # ["base","icl","cot","rag"]
+  workspace_path: "/root/k8srca/Cloud-OpsBench"
+  max_iterations: 15
+  trace_name: "k8s_diag"

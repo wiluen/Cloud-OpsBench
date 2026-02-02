@@ -1,4 +1,10 @@
-import json
+valid_nodes = ["master", "worker-01", "worker-02", "worker-03"]
+valid_services = [
+    "frontend", "cartservice", "productcatalogservice", "currencyservice", 
+    "paymentservice", "shippingservice", "emailservice", "checkoutservice", 
+    "recommendationservice", "adservice", "redis-cart"
+]
+valid_namespaces = ["boutique"]
 
 root_cause_list_str = """
 - namespace_cpu_quota_exceeded (Requires Target: NAMESPACE)
@@ -49,7 +55,7 @@ taxonomy_definitions = {
     "Infrastructure_Fault": "Refers to failures arising from the underlying cluster resources or critical Kubernetes system components, which occur independently of user business applications and configurations.",
     "Startup_Fault": "Refers to failures where the Pod has been successfully scheduled to a node but fails during image pulling or container initialization, preventing the Pod from entering the Running state.",
     "Runtime_Fault": "Refers to scenarios where the application container has successfully started and entered the Running state, but exits abnormally or behaves erratically due to internal errors or external dependency failures, or Kubernetes health probes.",
-    "Service_and_Network_Fault": "Refers to connectivity or discovery failures caused by misconfigurations of Kubernetes networking resources that disrupt traffic routing between Pods or external clients, excluding outages caused by system-level infrastructure.",
+    "Service_Routing_Fault": "Refers to connectivity or discovery failures caused by misconfigurations of Kubernetes networking resources that disrupt traffic routing between Pods or external clients, excluding outages caused by system-level infrastructure.",
     "Performance_Fault": "Refers to scenarios where the application functions functionally but performance metrics degrade significantly (e.g., high latency, low throughput, resource bottlenecks), failing to meet SLOs."
 }
 expected_output = f"""
@@ -117,7 +123,6 @@ expected_output = f"""
 
 agent_prompt="""
 "You are a professional Kubernetes operations engineer with extensive experience in systematic troubleshooting. 
-One problem has been reported in the `boutique` namespace.
 **Your Goal:** Diagnose the root cause of the reported issue based on factual evidence collected from the system.
 
 **Instructions:**
@@ -132,15 +137,23 @@ One problem has been reported in the `boutique` namespace.
 - Even when all cluster services appear 'Running', it doesn't guarantee full health. You must dive deeper and collect internal failure evidence.
 - Our scenario has one and only one fault. If you find multiple abnormal problems, please report only the most serious one.
 
-# ### Reasoning Style
-# - Limit your internal reasoning to few concise sentences. Then, IMMEDIATELY output the tool execution.
-# - Do not formulate long-term plans. Focus ONLY on the immediate next step.
-# - Find the root cause with the minimum number of steps.
+### Reasoning Style
+ - Limit your internal reasoning to few concise sentences. Then, IMMEDIATELY output the tool execution.
+ - Do not formulate long-term plans. Focus ONLY on the immediate next step.
+ - Find the root cause with the minimum number of steps.
 
 ### Output Format
 - Before all the diagnostic steps are completed, only the tool call format is allowed, the final answer format is absolutely prohibited.
 - The final answer format is allowed only after you have clearly found the root cause of all abnormal Pods through multiple rounds of tool calls.
 - The two formats cannot be nested, and the tool call results cannot be placed in Final Answer.
+
+**CRITICAL SYNTAX RULES:**
+1. **Empty Parameters:** If a tool (like `GetClusterConfiguration` or `GetAlerts`) does not require any parameters, you **MUST** provide an empty JSON dictionary as the input.
+  * **CORRECT:**
+  Action: GetClusterConfiguration
+  Action Input: {}
+
+2. The "Action Input" field is mandatory for every tool call.
 
 IMPORTANT: When classifying the fault stage, you MUST strictly follow this definition in [List A: Valid Taxonomies]
 
