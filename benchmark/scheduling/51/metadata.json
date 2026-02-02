@@ -1,0 +1,21 @@
+{
+  "namespace": "boutique",
+  "query": "Service Availability Disruption.",
+  "result": {
+    "fault_taxonomy": "Scheduling_Fault",
+    "fault_object": "service/redis-cart",
+    "root_cause": "insufficient_node_memory"
+  },
+  "process": {
+    "path1": [
+      "GetResources::pods",
+      "DescribeResource::pods::redis-cart"
+    ],
+    "path2": [
+      "GetResources::pods",
+      "DescribeResource::pods::redis-cart",
+      "DescribeResource::pods::memory-hog-b4zdn",
+      "GetClusterConfiguration::"
+    ]
+  }
+}

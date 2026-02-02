@@ -1,0 +1,21 @@
+{
+  "namespace": "boutique",
+  "query": "Service Availability Disruption.",
+  "result": {
+    "fault_taxonomy": "Scheduling_Fault",
+    "fault_object": "service/adservice",
+    "root_cause": "insufficient_node_cpu"
+  },
+  "process": {
+    "path1": [
+      "GetResources::pods",
+      "DescribeResource::pods::adservice"
+    ],
+    "path2": [
+      "GetResources::pods",
+      "DescribeResource::pods::adservice",
+      "DescribeResource::pods::cpu-consumer-cj5mh",
+      "GetClusterConfiguration::"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "namespace": "boutique",
+  "query": "Service Availability Disruption.",
+  "result": {
+    "fault_taxonomy": "Scheduling_Fault",
+    "fault_object": "service/cartservice",
+    "root_cause": "insufficient_node_cpu"
+  },
+  "process": {
+    "path1": [
+      "GetResources::pods",
+      "DescribeResource::pods::cartservice"
+    ],
+    "path2": [
+      "GetResources::pods",
+      "DescribeResource::pods::cartservice",
+      "GetClusterConfiguration::"
+    ]
+  }
+}
