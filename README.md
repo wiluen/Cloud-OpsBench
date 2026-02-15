@@ -12,7 +12,7 @@ Traditional AIOps benchmarks suffer from a dichotomy: they are either static dat
     * **High-Fidelity**: Captures full Kubernetes manifests, Prometheus metrics, and container logs.
     * **100% Reproducible**: Decouples state storage from tool interaction, eliminating environmental noise like network jitter.
     * **Zero-Cost Replay**: Runs a full benchmark on a laptop without maintaining expensive, live Kubernetes clusters.
-* **📊 Full-Stack Coverage**: Features **452** distinct fault cases across **40** root cause types, covering the entire K8s stack (Application, Scheduling, Infrastructure, etc.).
+* **📊 Full-Stack Coverage**: Features **452** distinct fault cases across **40** root cause types, covering the entire K8s stack (Runtime, Scheduling, Infrastructure, etc.).
 * **📏 Process-Centric Evaluation**: Evaluates not just the diagnosis outcome, but the quality of the investigation trajectory (alignment with expert reasoning).
 
 ## 📂 Dataset Statistics
