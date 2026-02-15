@@ -91,9 +91,6 @@ diagnosis:
 #### 2. Run the Diagnosis Agent
 Once configured, execute the main script to start the diagnosis process:
 
-Bash
-
+```bash
 python main.py
-Upon startup, the program will load the configuration and display the current task metadata:
-
-✅ Configuration loading completed... Model: gpt-4o | Fault type: startup | Max iter: 15 workspace path: /root/k8srca/Cloud-OpsBench ...
+```
