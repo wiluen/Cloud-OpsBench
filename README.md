@@ -34,9 +34,8 @@ Cloud-OpsBench is built upon the Google Online Boutique microservices architectu
 
 ### Prerequisites
 
-* Python 3.9+
+* Python 3.10+
 * Pip
-* (Optional) Docker if running the live environment generator
 
 ### Installation
 
@@ -95,7 +94,7 @@ Once configured, execute the main script to start the diagnosis process:
 python main.py
 ```
 #### 3. Evaluate Diagnosis Results
-Execute the evaluation script to get the outcome and process-based metrics
+Execute the evaluation script to get the outcome and process-based metrics:
 
 ```bash
 python evaluation.py
