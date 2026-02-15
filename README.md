@@ -21,11 +21,53 @@ Cloud-OpsBench is built upon the Google Online Boutique microservices architectu
 
 | Fault Category | Description | Difficulty | # Cases |
 | :--- | :--- | :--- | :--- |
-| **Admission Control** | Quota or permission violations (e.g., NamespaceQuotaExceeded) | Hard | 58 |
-| **Scheduling** | Pods pending due to constraints (e.g., NodeAffinityMismatch) | Medium | 164 |
-| **Startup** | Image pull or mount errors (e.g., CrashLoopBackOff) | Easy | 62 |
-| **Runtime** | App crashes or probe failures (e.g., OOMKilled) | Easy | 45 |
-| **Service Routing** | Traffic routing failures (e.g., ServiceSelectorMismatch) | Medium | 54 |
-| **Performance** | Latency/Throughput degradation (e.g., PodCPUOverload) | Hard | 21 |
-| **Infrastructure** | Node/Control plane outages (e.g., KubeletUnavailable) | Hard | 48 |
+| **Admission Control** | Requests rejected by API server due to quota or permission violations. | Hard | 58 |
+| **Scheduling** | Pods stay Pending due to unsatisfied node constraints or affinity rules | Medium | 164 |
+| **Startup** | Container creation fails due to image pull or storage mount errors. | Easy | 62 |
+| **Runtime** | Application crashes or fails health probes during execution. | Easy | 45 |
+| **Service Routing** | Traffic routing failures between internal components. | Medium | 54 |
+| **Performance** | Non-fatal degradation (latency/throughput) due to saturation | Hard | 21 |
+| **Infrastructure** | Outages in underlying cluster control plane or node components. | Hard | 48 |
 | **Total** | **40 distinct fault types** | - | **452** |
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+* Python 3.9+
+* Pip
+* (Optional) Docker if running the live environment generator
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone [https://github.com/your-org/Cloud-OpsBench.git](https://github.com/your-org/Cloud-OpsBench.git)
+    cd Cloud-OpsBench
+    ```
+
+2.  Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+### Data Preparation
+
+The benchmark relies on "State Snapshots" which act as the deterministic environment. Download the dataset (approx. 2.5GB):
+
+```bash
+# Download and unzip the snapshot data
+python scripts/download_data.py --target ./data --version v1.0
+Running an Evaluation
+You can evaluate an agent (e.g., OpenAI GPT-4o, DeepSeek-V3, or a custom LangChain agent) using the main benchmark script.
+
+Basic Usage:
+
+Bash
+
+python run_benchmark.py \
+    --model gpt-4o \
+    --agent_type react \
+    --output_dir results/ \
+    --max_steps 15 \
+    --cases all
