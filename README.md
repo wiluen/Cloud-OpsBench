@@ -30,6 +30,22 @@ Cloud-OpsBench is built upon the Google Online Boutique microservices architectu
 | **Infrastructure** | Outages in underlying cluster control plane or node components. | Hard | 48 |
 | **Total** | **40 distinct fault types** | - | **452** |
 
+## 🧰 Supported Diagnostic Tools
+
+Cloud-OpsBench provides a suite of **10 specialized diagnostic tools** designed to mimic the capabilities of human SREs. These tools allow agents to inspect resources, check connectivity, analyze telemetry, and diagnose infrastructure issues within the deterministic environment.
+
+| Category | Tool Name | Arguments | Description |
+| :--- | :--- | :--- | :--- |
+| **Resource Inspection** | `GetResources` | `resource_type`, `namespace`, `resource_name` | Lists resources in a namespace with status and extended attributes. |
+| | `DescribeResource` | `resource_type`, `resource_name`, `namespace` | Retrieves runtime details of a specific resource, including state, conditions, and events. |
+| | `GetAppYAML` | `service_name` | Fetches the deployment configuration YAML for a given service. |
+| **Service Interaction** | `GetServiceDependencies` | `service_name` | Returns the service dependency graph in a tree structure. |
+| | `CheckServiceConnectivity` | `namespace`, `service_name`, `port` | Tests service reachability via TCP handshake; returns connection success or failure. |
+| **Telemetry Analysis** | `GetAlerts` | *(None)* | Retrieves cluster metric anomalies from the threshold-based detector, returning abnormal metrics and deviation magnitude. |
+| | `GetRecentLogs` | `service_name`, `namespace` | Fetches recent logs (default: 50 lines) of a service for general error detection. |
+| | `GetErrorLogs` | `service_name`, `namespace` | Returns a summary of abnormal logs by matching keywords (e.g., `ERROR`, `FAIL`). |
+| **Infra Diagnostics** | `GetClusterConfiguration` | *(None)* | Retrieves cluster-wide node details, including resources, labels, taints, and status. |
+| | `CheckNodeServiceStatus` | `node_name`, `component_name` | Probes liveness of control plane components on a node; returns process status, runtime state, and log snippets. |
 ## 🚀 Getting Started
 
 ### Prerequisites
