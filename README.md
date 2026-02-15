@@ -22,11 +22,11 @@ Cloud-OpsBench is built upon the Google Online Boutique microservices architectu
 | Fault Category | Description | Difficulty | # Cases |
 | :--- | :--- | :--- | :--- |
 | **Admission Control** | Requests rejected by API server due to quota or permission violations. | Hard | 58 |
-| **Scheduling** | Pods stay Pending due to unsatisfied node constraints or affinity rules | Medium | 164 |
+| **Scheduling** | Pods stay Pending due to unsatisfied node constraints or affinity rules. | Medium | 164 |
 | **Startup** | Container creation fails due to image pull or storage mount errors. | Easy | 62 |
 | **Runtime** | Application crashes or fails health probes during execution. | Easy | 45 |
 | **Service Routing** | Traffic routing failures between internal components. | Medium | 54 |
-| **Performance** | Non-fatal degradation (latency/throughput) due to saturation | Hard | 21 |
+| **Performance** | Non-fatal degradation (latency/throughput) due to saturation. | Hard | 21 |
 | **Infrastructure** | Outages in underlying cluster control plane or node components. | Hard | 48 |
 | **Total** | **40 distinct fault types** | - | **452** |
 
