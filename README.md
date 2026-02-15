@@ -57,7 +57,7 @@ Cloud-OpsBench provides a suite of **10 specialized diagnostic tools** designed 
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/your-org/Cloud-OpsBench.git](https://github.com/your-org/Cloud-OpsBench.git)
+    git clone [https://github.com/wiluen/Cloud-OpsBench.git](https://github.com/wiluen/Cloud-OpsBench.git)
     cd Cloud-OpsBench
     ```
 
