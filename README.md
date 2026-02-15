@@ -50,24 +50,50 @@ Cloud-OpsBench is built upon the Google Online Boutique microservices architectu
     ```bash
     pip install -r requirements.txt
     ```
+### ⚙️ Configuration & Usage
 
-### Data Preparation
+The project uses `config.yaml` for unified configuration management. Before running a diagnosis task, please modify the parameters below as needed.
 
-The benchmark relies on "State Snapshots" which act as the deterministic environment. Download the dataset (approx. 2.5GB):
+#### 1. Modify Configuration (`config.yaml`)
 
-```bash
-# Download and unzip the snapshot data
-python scripts/download_data.py --target ./data --version v1.0
-Running an Evaluation
-You can evaluate an agent (e.g., OpenAI GPT-4o, DeepSeek-V3, or a custom LangChain agent) using the main benchmark script.
+Configure your LLM credentials, observability settings (Langfuse), and specific diagnosis task parameters:
 
-Basic Usage:
+```yaml
+# config.yaml
+
+# 1. LLM Model Settings
+llm:
+  model: "gpt-4o"            # Model identifier
+  api_base: "https://api..." # API Endpoint
+  api_key: "sk-..."          # API Key
+  temperature: 0
+  max_tokens: 4096
+
+# 2. Langfuse Observability Settings
+langfuse:
+  public_key: "pk-..."
+  secret_key: "sk-..."
+  base_url: "http://localhost:3000"
+
+# 3. Diagnosis Task Settings
+diagnosis:
+  # Fault Category: ["service", "admission", "startup", "runtime", "performance", "scheduling", "infrastructure"]
+  fault_category: "startup" 
+  
+  # Prompt Strategy: ["base", "icl" (In-Context Learning), "cot" (Chain of Thought), "rag"]
+  prompt_strategy: "base"
+  
+  # Workspace Path (IMPORTANT: Update this to your local absolute path)
+  workspace_path: "/root/k8srca/Cloud-OpsBench"
+  
+  max_iterations: 15
+
+2. Run the Diagnosis Agent
+Once configured, execute the main script to start the diagnosis process:
 
 Bash
 
-python run_benchmark.py \
-    --model gpt-4o \
-    --agent_type react \
-    --output_dir results/ \
-    --max_steps 15 \
-    --cases all
+python main.py
+Upon startup, the program will load the configuration and display the current task metadata:
+
+✅ Configuration loading completed... Model: gpt-4o | Fault type: startup | Max iter: 15 workspace path: /root/k8srca/Cloud-OpsBench ...
