@@ -19,7 +19,7 @@ Traditional AIOps benchmarks suffer from a dichotomy: they are either static dat
 
 Cloud-OpsBench is built upon the Google Online Boutique microservices architecture. The distribution of fault categories is as follows:
 
-| Fault Category | Description | Difficulty | # Cases |
+| Fault Category | Description | Difficulty | Cases |
 | :--- | :--- | :--- | :--- |
 | **Admission Control** | Requests rejected by API server due to quota or permission violations. | Hard | 58 |
 | **Scheduling** | Pods stay Pending due to unsatisfied node constraints or affinity rules. | Medium | 164 |
