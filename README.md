@@ -94,3 +94,9 @@ Once configured, execute the main script to start the diagnosis process:
 ```bash
 python main.py
 ```
+#### 3. Evaluate Diagnosis Results
+Execute the evaluation script to get the outcome and process-based metrics
+
+```bash
+python evaluation.py
+```
