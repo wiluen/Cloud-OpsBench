@@ -2,7 +2,7 @@
 
 Traditional AIOps benchmarks suffer from a dichotomy: they are either static data dumps (lacking interactivity) or dynamic live environments (lacking determinism/reproducibility). Cloud-OpsBench resolves this by introducing the **State Snapshot Paradigm**. It freezes the complete context of a Kubernetes cluster at the moment of failure—including control plane objects, metrics, and logs—into an immutable persistence layer, providing a zero-latency, deterministic interface for tool interaction.
 
-![Overview of Cloud-OpsBench](docs/images/overview.png)
+![Overview of Cloud-OpsBench](https://github.com/wiluen/Cloud-OpsBench/blob/main/resource/overview.png)
 
 
 ## 🌟 Key Features
