@@ -88,7 +88,7 @@ diagnosis:
   
   max_iterations: 15
 ```
-2. Run the Diagnosis Agent
+#### 2. Run the Diagnosis Agent
 Once configured, execute the main script to start the diagnosis process:
 
 Bash
