@@ -145,5 +145,5 @@ Evaluation results on the Cloud-OpsBench test set. Metrics include Outcome Effec
 **Metrics Key:**
 * **Outcome**: `A@k` (Top-k Accuracy), `TCR` (Task Completion Rate).
 * **Process (Alignment)**: `Exact` (Exact Match), `InO.` (In-Order Match), `AnyO.` (Any-Order Match).
-* **Process (Tool Use)**: `Rel.` (Relevance), `Cov.` (Coverage), `Steps` (Avg. Steps), `IAC` (Invalid Action Count).
-* **Efficiency**: `MTTI` (Mean Time to Identify - simulated), `RAR` (Redundant Action Rate), `ZTDR` (Zero-Turn Diagnosis Rate).
+* **Process (Tool Use)**: `Rel.` (Relevance), `Cov.` (Coverage), `Steps` (Avg. Steps), `MTTI` (Mean Time to Identify - simulated).
+* **Efficiency**: `IAC` (Invalid Action Count), `RAR` (Redundant Action Rate), `ZTDR` (Zero-Turn Diagnosis Rate).
