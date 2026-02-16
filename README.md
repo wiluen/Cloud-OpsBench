@@ -65,6 +65,18 @@ Cloud-OpsBench provides a suite of **10 specialized diagnostic tools** designed 
     ```bash
     pip install -r requirements.txt
     ```
+3.  Setup Langfuse (Observability):
+    We use [Langfuse](https://github.com/langfuse/langfuse) to trace and visualize the agent's ReAct reasoning process. and this project is built upon the [CrewAI](https://github.com/crewAIInc/crewAI) framework. Run the following commands to deploy it locally:
+
+    ```bash
+    # Get a copy of the latest Langfuse repository
+    git clone [https://github.com/langfuse/langfuse.git](https://github.com/langfuse/langfuse.git)
+    cd langfuse
+
+    # Run the langfuse docker compose
+    docker compose up
+    ```
+    
 ### ⚙️ Configuration & Usage
 
 The project uses `config.yaml` for unified configuration management. Before running a diagnosis task, please modify the parameters below as needed.
