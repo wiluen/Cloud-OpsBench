@@ -70,7 +70,7 @@ Cloud-OpsBench provides a suite of **10 specialized diagnostic tools** designed 
 
     ```bash
     # Get a copy of the latest Langfuse repository
-    git clone [https://github.com/langfuse/langfuse.git](https://github.com/langfuse/langfuse.git)
+    git clone https://github.com/langfuse/langfuse.git
     cd langfuse
 
     # Run the langfuse docker compose
