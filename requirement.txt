@@ -1,0 +1,5 @@
+crewai==1.4.1
+pydantic==2.12.4
+langfuse==3.9.3
+openinference-instrumentation-crewai==0.1.16
+pyyaml==6.0.3
