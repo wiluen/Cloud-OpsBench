@@ -76,7 +76,12 @@ Cloud-OpsBench provides a suite of **10 specialized diagnostic tools** designed 
     # Run the langfuse docker compose
     docker compose up
     ```
-    
+### 📽️ An Easy Demo  
+We provide a demo that you can directly interact with fault cases in Cloud-OpsBench for diagnosis. We provide an [video link](https://www.youtube.com/watch?v=lVd0f-24T8o) to show.
+```bash
+python main.py
+```
+
 ### ⚙️ Configuration & Usage
 
 The project uses `config.yaml` for unified configuration management. Before running a diagnosis task, please modify the parameters below as needed.
